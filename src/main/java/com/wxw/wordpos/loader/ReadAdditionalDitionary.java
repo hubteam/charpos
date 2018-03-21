@@ -15,8 +15,9 @@ public class ReadAdditionalDitionary {
 	private static Set<String> wordSet = new HashSet<String>();
 
 	public static Set<String> getWords(String path , String code){
+		BufferedReader br = null;
 		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(path)),code));
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(path)),code));
 			String line = null;
 			while((line = br.readLine()) != null){
 				line = line.replaceAll("\\s","").replaceAll("\n","");
@@ -25,15 +26,18 @@ public class ReadAdditionalDitionary {
 				}
 			}
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		} finally {
+			try {
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		return wordSet;	
 	}
 }

@@ -51,6 +51,7 @@ public class WordPosME implements WordPos{
 	private int size;
 	private Sequence bestSequence;
 	private SequenceClassificationModel<String> model;
+	@SuppressWarnings("unused")
 	private WordPosModel modelPackage;
 	private List<String> characters = new ArrayList<>();
 	private List<String> segwords = new ArrayList<>();
@@ -264,9 +265,8 @@ public class WordPosME implements WordPos{
 	 */
 	@Override
 	public String[] wordpos(String[] words) {
-		String[] characterandpos = tag(words);
-		String[] poses = WordPosSample.toPos(characterandpos);
-		return poses;
+		String[] pos = tag(words);
+		return pos;
 	}
 	
 	/**

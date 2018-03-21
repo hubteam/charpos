@@ -26,7 +26,7 @@ public class WordPosModel extends BaseModel{
 	 * @param modelFile 模型文件
 	 * @throws IOException IO异常
 	 */
-	protected WordPosModel(String componentName, File modelFile) throws IOException {
+	public WordPosModel(File modelFile) throws IOException {
 		super(COMPONENT_NAME, modelFile);
 		
 	}
@@ -77,6 +77,7 @@ public class WordPosModel extends BaseModel{
         }
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public SequenceClassificationModel<String> getWordSegPosSequenceModel() {
 
         Properties manifest = (Properties) artifactMap.get(MANIFEST_ENTRY);
